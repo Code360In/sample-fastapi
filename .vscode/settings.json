@@ -1,9 +1,8 @@
 {
     "python.analysis.extraPaths": [
-        ".venv/lib/python3.9/site-packages",
+        "./site-packages"
     ],
     "python.autoComplete.extraPaths": [
-        ".venv/lib/python3.9/site-packages"
+        "./site-packages"
     ]
 }
-

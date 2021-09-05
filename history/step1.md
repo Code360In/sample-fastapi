@@ -20,7 +20,6 @@ admin@gw-mac sample-fastapi % touch backend/app/api/__init__.py backend/app/api/
 admin@gw-mac sample-fastapi % mkdir backend/app/api/routes
 admin@gw-mac sample-fastapi % touch backend/app/api/routes/__init__.py backend/app/api/routes/hedgehogs.py
 admin@gw-mac sample-fastapi % tree
-
 .
 ├── How_to_Install_Python3_on_Mac.md
 ├── README.md
@@ -37,45 +36,17 @@ admin@gw-mac sample-fastapi % tree
 │   ├── requirements.txt
 │   └── tests
 ├── docker-compose.yml
-└── history.md
+└── history
+    └── step1.md
 
-6 directories, 10 files
+7 directories, 10 files
 admin@gw-mac sample-fastapi % 
-
 ```
 
 # 2. Install Python module
 
 ```sh
-admin@gw-mac sample-fastapi % python3 -m venv .venv
-admin@gw-mac sample-fastapi % 
-admin@gw-mac sample-fastapi % ls -la .venv                             
-
-total 8
-drwxr-xr-x   6 admin  staff  192 Sep  5 09:32 .
-drwxr-xr-x   9 admin  staff  288 Sep  5 09:32 ..
-drwxr-xr-x  12 admin  staff  384 Sep  5 09:32 bin
-drwxr-xr-x   2 admin  staff   64 Sep  5 09:32 include
-drwxr-xr-x   3 admin  staff   96 Sep  5 09:32 lib
--rw-r--r--   1 admin  staff   93 Sep  5 09:32 pyvenv.cfg
-admin@gw-mac sample-fastapi % 
-admin@gw-mac sample-fastapi % ls -la .venv/lib/python3.9/site-packages/
-
-total 8
-drwxr-xr-x   9 admin  staff   288 Sep  5 09:32 .
-drwxr-xr-x   3 admin  staff    96 Sep  5 09:32 ..
-drwxr-xr-x   5 admin  staff   160 Sep  5 09:32 _distutils_hack
--rw-r--r--   1 admin  staff   152 Sep  5 09:32 distutils-precedence.pth
-drwxr-xr-x   8 admin  staff   256 Sep  5 09:32 pip
-drwxr-xr-x  10 admin  staff   320 Sep  5 09:32 pip-21.1.3.dist-info
-drwxr-xr-x   7 admin  staff   224 Sep  5 09:32 pkg_resources
-drwxr-xr-x  41 admin  staff  1312 Sep  5 09:32 setuptools
-drwxr-xr-x  11 admin  staff   352 Sep  5 09:32 setuptools-57.0.0.dist-info
-admin@gw-mac sample-fastapi % 
-admin@gw-mac sample-fastapi % . .venv/bin/activate                                                      
-(.venv) admin@gw-mac sample-fastapi % 
-(.venv) admin@gw-mac sample-fastapi % pip3 install -r backend/requirements.txt                                  
-
+admin@gw-mac sample-fastapi % pip3 install -r backend/requirements.txt -t site-packages
 Collecting fastapi==0.68.1
   Using cached fastapi-0.68.1-py3-none-any.whl (52 kB)
 Collecting uvicorn==0.15.0
@@ -84,35 +55,30 @@ Collecting starlette==0.14.2
   Using cached starlette-0.14.2-py3-none-any.whl (60 kB)
 Collecting pydantic!=1.7,!=1.7.1,!=1.7.2,!=1.7.3,!=1.8,!=1.8.1,<2.0.0,>=1.6.2
   Using cached pydantic-1.8.2-py3-none-any.whl (126 kB)
+Collecting asgiref>=3.4.0
+  Using cached asgiref-3.4.1-py3-none-any.whl (25 kB)
 Collecting click>=7.0
   Using cached click-8.0.1-py3-none-any.whl (97 kB)
 Collecting h11>=0.8
   Using cached h11-0.12.0-py3-none-any.whl (54 kB)
-Collecting asgiref>=3.4.0
-  Using cached asgiref-3.4.1-py3-none-any.whl (25 kB)
 Collecting typing-extensions>=3.7.4.3
   Using cached typing_extensions-3.10.0.2-py3-none-any.whl (26 kB)
 Installing collected packages: typing-extensions, starlette, pydantic, h11, click, asgiref, uvicorn, fastapi
 Successfully installed asgiref-3.4.1 click-8.0.1 fastapi-0.68.1 h11-0.12.0 pydantic-1.8.2 starlette-0.14.2 typing-extensions-3.10.0.2 uvicorn-0.15.0
 WARNING: You are using pip version 21.1.3; however, version 21.2.4 is available.
-You should consider upgrading via the '/Users/admin/Desktop/study/sample-fastapi/.venv/bin/python3.9 -m pip install --upgrade pip' command.
-(.venv) admin@gw-mac sample-fastapi % 
-(.venv) admin@gw-mac sample-fastapi % deactivate                                       
-
-admin@gw-mac sample-fastapi %
+You should consider upgrading via the '/opt/homebrew/opt/python@3.9/bin/python3.9 -m pip install --upgrade pip' command.
+admin@gw-mac sample-fastapi % 
 admin@gw-mac sample-fastapi % cat .vscode/settings.json 
 {
     "python.analysis.extraPaths": [
-        ".venv/lib/python3.9/site-packages",
+        "./site-packages"
     ],
     "python.autoComplete.extraPaths": [
-        ".venv/lib/python3.9/site-packages"
+        "./site-packages"
     ]
 }
-
 admin@gw-mac sample-fastapi % 
 ```
-
 
 
 # 3. Build image
